@@ -1,0 +1,138 @@
+#include<stdio.h>
+#include<stdlib.h>
+#include<math.h>
+#include<string.h>
+
+   int main(void)
+{   //Longest word in the text.
+   char text[500];
+   int n,i,len,max=0;
+   scanf("%d",&n);
+   for(i=0;i<n;i++)
+   {  scanf("%s",&text);
+      len=0;
+      while(text[len]!='\0')
+      {
+          len++;
+      }
+       if(len>max)
+      {
+          max=len;
+      }
+   }
+ printf("Longest word in the text:%d.",max);
+  return 0;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

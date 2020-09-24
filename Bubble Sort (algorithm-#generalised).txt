@@ -1,0 +1,52 @@
+#include<stdio.h>
+#include<stdlib.h>
+#include<math.h>
+#include<string.h>
+
+   int main(void)
+{   //Sorting the list(asked from user) in ascending order using bubble sort algorithm.
+
+     int list[50];
+     int n,i,j,k,t,l,h=0,s;
+     printf("Enter the limit of the list(array):\n");
+     scanf("%d",&n);
+     printf("Enter the elements of the array:\n");
+     for(i=0;i<n;i++)
+     {
+         scanf("%d",&list[i]);
+     }
+     printf("Steps are as follows:\n");
+     for(k=0;k<n-1;k++)
+     {
+        for(j=0;j<n-1;j++)
+        {
+             if(list[j]>list[j+1])     //It is called as bubble sort,since the largest element is bubbled out at the end of the list.
+            {
+                t=list[j];
+                list[j]=list[j+1];
+                list[j+1]=t;
+            }
+            for(s=0;s<n;s++)
+            {
+                printf("%d ",list[s]);
+            }
+            printf("\n");
+        }
+        printf("\n");
+        h++;
+        printf("Pass %d\n",h);
+        for(l=0;l<n;l++)
+        {
+            printf("%d ",list[l]);
+        }
+        printf("\n");
+        printf("\n");
+     }
+     printf("Sorted elements of the array:\n ");
+     printf("\b");
+     for(i=0;i<n;i++)
+     {
+         printf("%d ",list[i]);
+     }
+     return 0;
+}

@@ -1,0 +1,154 @@
+#include<stdio.h>
+#include<stdlib.h>
+#include<math.h>
+#include<string.h>
+
+   int main(void)
+{   //Find the given element in a sorted list using bisection(binary search).
+
+     int list[]={1,2,4,45,106,900};
+     int n=6;//sorted list in ascending order..
+     int mid,item,i=0,lb=0,ub=n-1;
+     printf("Enter the item that needs to be found :\n");
+     scanf("%d",&item);
+     while(!i && lb<=ub)
+     {
+         mid=(lb+ub)/2;
+         if(item==list[mid])
+         {
+             i++;
+         }
+
+         else if(item>list[mid])
+         {
+             lb=mid+1;
+         }
+         else
+         {
+             ub=mid-1;
+         }
+
+
+     }
+     if(i==0)
+     {printf("The given item %d is not found.\n",item);
+     }
+     else
+     {
+         printf("The given item %d is found at location %d.\n",item,mid);
+     }
+   return 0;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

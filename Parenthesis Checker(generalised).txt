@@ -1,0 +1,53 @@
+#include <stdio.h>
+#include<string.h>
+#include <stdlib.h>
+#define max 50
+char s[max];
+int top=-1;
+void push(char e)
+{
+  if(top==max-1)
+  printf("Stack Overflow\n");
+  else
+  s[++top]=e;
+}
+
+char pop()
+{
+    if(top==-1)
+    printf("Stack Underflow\n");
+    else
+    return s[top--];
+}
+int main(void)
+{
+    char string[max],c;
+    int n,i,count=0;
+    printf("Enter the expression(brackets): ");
+    gets(string);
+    n=strlen(string);
+    for(i=0;i<n;i++)
+    {
+        if(string[i]=='(' || string[i]=='[' || string[i]=='{')
+        push(string[i]);
+        else
+        {
+            c=pop();
+            if((int)c==(int)string[i]-2 || (int)c==(int)string[i]-1)
+            count+=2;
+            else
+            {
+                count=-1;
+                break;
+            }
+        }
+    }
+    if(count%2==0 && count>0 && top==-1)
+    printf("Brackets are balanced in the expression\n");
+    else
+    printf("Brackets are not balanced in the expression\n");
+return 0;
+}
+
+
+

@@ -1,0 +1,75 @@
+#include<stdio.h>
+#include<stdlib.h>
+#include<ctype.h>
+#define max 50
+void push(float e);
+float pop();
+float postfix(char pe[30]);
+int top=-1;
+float s[max];
+
+int main(void)
+{
+  char exp[30];
+  float val;
+  printf("Enter the postfix expression:\n");
+  gets(exp);
+  val=postfix(exp);
+  printf("The required value is: %.0f",val);
+  return 0;
+}
+float postfix(char pe[30])
+{
+  int i=0;
+  float op1,op2,ans;
+  while(pe[i]!='\0')
+  {
+    if(isdigit(pe[i]))
+    {
+      push((float)(pe[i]-48));
+    }
+    else
+    {
+     op2=pop();
+     op1=pop();
+     switch(pe[i])
+     {
+      case '+':
+      ans=op1+op2;
+      break;
+
+      case '-':
+      ans=op1-op2;
+      break;
+
+      case '*':
+      ans=op1*op2;
+      break;
+
+      case '/':
+      ans=op1/op2;
+      break;
+    }
+     push(ans);
+  }
+    i++;
+ }
+return ans;
+}
+void push(float e)
+{
+  if(top==max-1)
+  {
+     printf("Stack Overflow\n");
+  }
+  else
+  {
+     s[++top]=e;
+  }
+}
+float pop()
+{
+   return s[top--];
+}
+
+

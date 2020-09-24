@@ -1,0 +1,92 @@
+#include<stdio.h>
+#include<stdlib.h>
+#include<string.h>
+#include<ctype.h>
+#define max 50
+void push(char e);
+char pop();
+void del();
+int is_operator(char in);
+int precedance_operator(char in);
+void infix_postfix(char in[max]);
+char postfix[max];
+char s[max];
+int top=-1;
+int main(void)
+{
+    char infix[max];
+    int n1=0,n2=0,i;
+    printf("Enter the infix expression:\n");
+    gets(infix);
+    n1=strlen(infix);
+    infix[n1]=')';
+    for(i=0;i<n1;i++)
+    {
+        if(infix[i]!='(' && infix[i]!=')')
+        n2++;
+    }
+    infix_postfix(infix);
+    postfix[n2]='\0';
+    printf("The required postfix expression is: ");
+    puts(postfix);
+
+ return 0;
+}
+void push(char e)
+{
+   s[++top]=e;
+}
+char pop()
+{
+   return s[top--];
+}
+void del()
+{
+   top--;
+}
+int is_operator(char in)
+{
+    if(in=='^'||in=='/'||in=='*'||in=='+'||in=='-')
+    return 1;
+    else
+    return 0;
+}
+int precedance_operator(char in)
+{
+    switch(in)
+    {
+        case '^':return 3;
+        case '/':
+        case '*':return 2;
+        case '+':
+        case '-':return 1;
+        default:return 0;
+    }
+}
+void infix_postfix(char in[max])
+{
+    int infix_ptr=0,post_ptr=-1;
+    push('(');
+    while(in[infix_ptr]!='\0')
+    {
+        if(in[infix_ptr]=='(')
+        push('(');
+        else if(isalnum(in[infix_ptr]))
+        postfix[++post_ptr]=in[infix_ptr];
+        else if(is_operator(in[infix_ptr]))
+        {
+            while(precedance_operator(s[top])>=precedance_operator(in[infix_ptr]))
+            postfix[++post_ptr]=pop();
+            push(in[infix_ptr]);
+        }
+        else if(in[infix_ptr]==')')
+        {
+            while(s[top]!='(')
+            postfix[++post_ptr]=pop();
+            if(s[top]=='(')
+            del();
+        }
+        infix_ptr++;
+    }
+}
+
